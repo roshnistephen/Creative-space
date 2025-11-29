@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Space | Custom Gift Hampers & Chocolate Towers</title>
+  <meta name="description" content="Creative Space creates customized gift hampers, chocolate towers and budget-friendly gifts with courier delivery. Make every celebration special.">
+  <style>
+    :root {
+      --bg: #f9f4ff;
+      --accent: #c59bff;
+      --accent-dark: #7c4edc;
+      --text: #2b2333;
+      --muted: #7a6f85;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #ffe9f0 0, var(--bg) 40%, #f3ebff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 1.2rem 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--accent-dark);
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent-dark);
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      max-width: 32rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0, var(--accent-dark) 100%);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(124, 78, 220, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(124, 78, 220, 0.4);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--accent-dark);
+      border: 1px solid rgba(197, 155, 255, 0.4);
+    }
+
+    .btn-ghost:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-note span {
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    /* HERO IMAGE SIDE */
+    .hero-card {
+      background: rgba(255, 255, 255, 0.86);
+      border-radius: 1.8rem;
+      padding: 1.4rem;
+      box-shadow: 0 28px 60px rgba(55, 35, 90, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, #ffe6f5 0, transparent 60%);
+      top: -50px;
+      right: -40px;
+      opacity: 0.7;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .mini-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #f5f0ff;
+      color: var(--accent-dark);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .stat {
+      background: #fdfbff;
+      border-radius: 1rem;
+      padding: 0.6rem 0.8rem;
+      flex: 1;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    /* SECTION GENERIC */
+    section {
+      padding: 2.2rem 0;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+
+    section p.section-intro {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin: 0 auto 1.6rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 1.4rem;
+      padding: 1.6rem 1.2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .about p {
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    /* SERVICES */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.2rem;
+      padding: 1.1rem 1rem;
+      box-shadow: 0 14px 32px rgba(55, 35, 90, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* WHY US */
+    .why-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 0.4rem;
+    }
+
+    .why-item {
+      background: #f5f0ff;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+      white-space: nowrap;
+    }
+
+    /* CTA STRIP */
+    .cta-strip {
+      margin-top: 1.4rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 1.3rem;
+      background: linear-gradient(135deg, #ffe3f2 0, #e5d5ff 50%, #fff0f6 100%);
+      text-align: center;
+      font-size: 0.95rem;
+      box-shadow: 0 16px 40px rgba(124, 78, 220, 0.28);
+    }
+
+    .cta-strip p {
+      margin-bottom: 0.7rem;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      box-shadow: 0 16px 40px rgba(55, 35, 90, 0.1);
+      font-size: 0.95rem;
+    }
+
+    .contact-card p {
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+
+    .contact-card strong {
+      color: var(--text);
+    }
+
+    .contact-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      box-shadow: 0 16px 40px rgba(55, 35, 90, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .field {
+      margin-bottom: 0.7rem;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.85rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border-radius: 0.7rem;
+      border: 1px solid #e0d4ff;
+      padding: 0.5rem 0.7rem;
+      font: inherit;
+      outline: none;
+      background: #fdfbff;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent-dark);
+      box-shadow: 0 0 0 2px rgba(124, 78, 220, 0.15);
+      background: #fff;
+    }
+
+    .field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    footer {
+      padding: 1.2rem 0 1.4rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent-dark);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        order: -1;
+      }
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        font-size: 0.85rem;
+      }
+      .hero {
+        padding-top: 2rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div>
+        <div class="logo"><span>Creative</span> Space</div>
+        <div class="tagline">Custom Hampers • Gift Boxes • Chocolate Towers</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Gift Hampers</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="container hero">
+      <div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Budget-friendly gifting • Courier available
+        </div>
+        <h1>Make every <span>celebration</span> feel extra special.</h1>
+        <p>
+          Creative Space crafts personalized gift hampers, chocolate towers and custom gift
+          boxes for birthdays, weddings, baby showers, corporate events and more – styled to your theme and budget.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary">View Gift Hampers</button>
+          <a href="https://wa.me/919876543210" class="btn-ghost">Chat on WhatsApp</a>
+        </div>
+        <p class="hero-note">Tell us your <span>budget + occasion</span> – we’ll design the rest.</p>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">Gift Box & Hampers • Chocolate Towers</div>
+        <div class="hero-card-sub">Custom themes • Name tags • Photo prints • Premium packing</div>
+        <div class="mini-tags">
+          <div class="mini-tag">Birthday Surprises</div>
+          <div class="mini-tag">Baby Shower Hampers</div>
+          <div class="mini-tag">Corporate Gifts</div>
+          <div class="mini-tag">Festive Hampers</div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>100+</strong>
+            Hampers curated
+          </div>
+          <div class="stat">
+            <strong>Budget</strong>
+            Friendly ideas
+          </div>
+          <div class="stat">
+            <strong>Courier</strong>
+            Safe & secure
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="about">
+          <h2>About Creative Space</h2>
+          <p class="section-intro">
+            Personal, pretty and pocket-friendly gifting for every celebration.
+          </p>
+          <p>
+            At Creative Space, we love turning simple gifts into beautiful memories.
+            We design customized gift hampers, chocolate towers, and curated gift boxes that match your theme, colours
+            and budget. Whether it is a birthday, anniversary, baby shower, housewarming or office event, we style each
+            box with care, premium packing and small thoughtful details.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2>What We Create</h2>
+        <p class="section-intro">
+          Choose your budget and occasion – we’ll suggest ideas and build a hamper you’ll love.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <h3>Gift Hampers & Boxes</h3>
+            <p>
+              Curated hampers with chocolates, snacks, wellness items, self-care goodies and decor, styled inside
+              premium boxes and baskets.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Customized Gifts</h3>
+            <p>
+              Name and photo-printed gifts, themed keepsakes and personalised notes that make every gift feel truly yours.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Chocolate Towers</h3>
+            <p>
+              Show-stopping chocolate towers and bouquets – perfect for birthdays, anniversaries and surprise plans.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Budget-Friendly Combos</h3>
+            <p>
+              Cute mini hampers and gift combos starting from pocket-friendly prices for quick, last-minute gifting.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Occasion Styling</h3>
+            <p>
+              Theme-based colours, ribbons, tags and fillers to match your event – from kids’ parties to elegant evenings.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Courier & Delivery</h3>
+            <p>
+              Safely packed and shipped with trusted courier partners so your surprise reaches on time, in perfect condition.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why">
+      <div class="container">
+        <h2>Why Celebrate With Us?</h2>
+        <p class="section-intro">
+          Simple process, thoughtful designs and gifts that look premium without breaking your budget.
+        </p>
+        <div class="why-list">
+          <div class="why-item">Custom designs for every occasion</div>
+          <div class="why-item">Budget-based hampers</div>
+          <div class="why-item">Premium packing & details</div>
+          <div class="why-item">Quick WhatsApp responses</div>
+          <div class="why-item">Courier service available</div>
+        </div>
+
+        <div class="cta-strip">
+          <p>
+            Ready to surprise someone special? Share your <strong>budget, occasion and date</strong> – we’ll create a
+            customized hamper just for you.
+          </p>
+          <a href="https://wa.me/919876543210" class="btn-primary">Send Your Details on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact & Orders</h2>
+        <p class="section-intro">
+          Send us a message with your requirements. We’ll reply with ideas and price options.
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <p><strong>WhatsApp:</strong> +91 98765 43210</p>
+            <p><strong>Email:</strong> creativespacegifts@example.com</p>
+            <p><strong>Instagram:</strong> @creativespace.gifts</p>
+            <p><strong>Location:</strong> Your City, Your State</p>
+            <p class="contact-note">
+              Share details like: occasion, age/gender, theme (if any), budget range and delivery date.
+            </p>
+          </div>
+
+          <form class="contact-form">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="text" id="phone" placeholder="Your phone number" />
+            </div>
+            <div class="field">
+              <label for="details">Gift Details</label>
+              <textarea id="details" placeholder="Occasion, budget, delivery date, any theme..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send Enquiry (Demo)</button>
+            <p class="contact-note">Form is static. Use it later with backend or Google Forms if needed.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Creative Space. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
