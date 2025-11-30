@@ -4,10 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creative Space | Custom Gift Hampers & Chocolate Towers</title>
+  
+  <!-- SEO Meta Tags -->
   <meta name="description" content="Creative Space creates customized gift hampers, chocolate towers, frames and budget-friendly gifts with courier delivery. Make every celebration special. Located in Cherthala, Alappuzha.">
+  <meta name="keywords" content="gift hampers, custom gifts, chocolate towers, gift boxes, personalized gifts, birthday gifts, wedding gifts, baby shower gifts, corporate gifts, Cherthala, Alappuzha, Kerala">
+  <meta name="author" content="Creative Space">
+  <meta name="theme-color" content="#7c4edc">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Creative Space | Custom Gift Hampers & Chocolate Towers">
+  <meta property="og:description" content="Creative Space creates customized gift hampers, chocolate towers, frames and budget-friendly gifts with courier delivery. Make every celebration special.">
+  <meta property="og:url" content="https://creativespace.lokaai.in/">
+  <meta property="og:site_name" content="Creative Space">
+  <meta property="og:locale" content="en_IN">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Creative Space | Custom Gift Hampers & Chocolate Towers">
+  <meta name="twitter:description" content="Creative Space creates customized gift hampers, chocolate towers, frames and budget-friendly gifts with courier delivery.">
+  
+  <!-- Robots Meta Tags -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://creativespace.lokaai.in/">
+  
+  <!-- Preconnect for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://wa.me">
+  <link rel="dns-prefetch" href="https://www.instagram.com">
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,11 +59,15 @@
         </div>
       </a>
       <!-- Menu Toggle Button -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-        <span class="menu-gift-icon">🎁</span>
-        <span class="menu-text">MENU</span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="menu-icon-open">
+          <span class="menu-gift-icon">🎁</span>
+          <span class="menu-text">MENU</span>
+        </span>
+        <span class="menu-icon-close">✕</span>
       </button>
-      <nav class="nav-links" id="navLinks">
+      <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close Menu">✕</button>
         <a href="#home"><span class="nav-icon">🏠</span> Home</a>
         <a href="#about"><span class="nav-icon">✨</span> About</a>
         <a href="#gallery"><span class="nav-icon">📸</span> Gallery</a>
@@ -134,11 +172,6 @@
               </div>
             </div>
           </div>
-          <div class="business-whatsapp">
-            <a href="https://wa.me/917012716657" target="_blank" rel="noopener">
-              📱 WhatsApp: +91 70127 16657
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -227,62 +260,86 @@
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.27 PM.jpeg" alt="Custom gift hamper with premium packaging" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.27 PM (1).jpeg" alt="Beautifully decorated gift box arrangement" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.29 PM.jpeg" alt="Chocolate tower gift creation" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.31 PM.jpeg" alt="Birthday celebration hamper" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.33 PM.jpeg" alt="Special occasion gift basket" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.34 PM.jpeg" alt="Custom photo frame gift" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.35 PM.jpeg" alt="Premium festive hamper" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.36 PM.jpeg" alt="Baby shower gift box" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.36 PM (1).jpeg" alt="Personalized keepsake gift" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.36 PM (2).jpeg" alt="Corporate gift arrangement" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.37 PM.jpeg" alt="Anniversary celebration hamper" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
           <div class="gallery-item">
             <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.37 PM (1).jpeg" alt="Themed party gift box" loading="lazy">
             <div class="gallery-overlay"></div>
-            <span class="gallery-heart">💖</span>
+            <button class="gallery-like-btn" aria-label="Like this image">
+              <span class="heart-icon">🤍</span>
+            </button>
           </div>
         </div>
       </div>
@@ -329,7 +386,6 @@
             Ready to surprise someone special? Share your <strong>budget, occasion and date</strong> – we'll create a
             customized hamper just for you.
           </p>
-          <a href="https://wa.me/917012716657" class="btn-primary btn-whatsapp" target="_blank" rel="noopener">📲 Send Your Details on WhatsApp</a>
         </div>
       </div>
     </section>
@@ -344,30 +400,41 @@
         <div class="contact-grid">
           <div class="contact-card">
             <div class="contact-whatsapp-main">
-              <a href="https://wa.me/917012716657" target="_blank" rel="noopener">
-                <span class="contact-icon">📱</span>
-                <strong>WhatsApp: +91 70127 16657</strong>
+              <a href="https://wa.me/917012716657" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+                <svg class="contact-social-icon whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <strong>+91 70127 16657</strong>
               </a>
             </div>
             <p><span class="contact-icon">📍</span> <strong>Location:</strong> Cherthala, Alappuzha</p>
-            <p><span class="contact-icon">📸</span> <strong>Instagram:</strong> <a href="https://www.instagram.com/creative__space_02/" target="_blank" rel="noopener">@creative__space_02</a></p>
+            <p class="contact-instagram">
+              <a href="https://www.instagram.com/creative__space_02/" target="_blank" rel="noopener" aria-label="Follow on Instagram">
+                <svg class="contact-social-icon instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+              </a>
+            </p>
             <p class="contact-note">
               💡 Share details like: occasion, age/gender, theme (if any), budget range and delivery date.
             </p>
           </div>
 
-          <form class="contact-form">
+          <form class="contact-form" id="contactForm" novalidate>
             <div class="field">
               <label for="name">👤 Name</label>
-              <input type="text" id="name" placeholder="Your name" />
+              <input type="text" id="name" name="name" placeholder="Your name" required minlength="2" />
+              <span class="field-error" id="nameError"></span>
             </div>
             <div class="field">
               <label for="phone">📱 Phone / WhatsApp</label>
-              <input type="text" id="phone" placeholder="Your phone number" />
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required pattern="[0-9+\s\-]{10,20}" />
+              <span class="field-error" id="phoneError"></span>
             </div>
             <div class="field">
               <label for="details">🎁 Gift Details</label>
-              <textarea id="details" placeholder="Occasion, budget, delivery date, any theme..."></textarea>
+              <textarea id="details" name="details" placeholder="Occasion, budget, delivery date, any theme..." required minlength="10"></textarea>
+              <span class="field-error" id="detailsError"></span>
             </div>
             <button type="submit" class="btn-primary btn-whatsapp">📲 Send via WhatsApp</button>
             <p class="contact-note">✨ This will open WhatsApp with your message pre-filled!</p>
@@ -380,7 +447,9 @@
   <!-- WHATSAPP FLOATING BUTTON -->
   <div class="whatsapp-float">
     <a href="https://wa.me/917012716657" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon">
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
       <span class="gift-icon">🎁</span>
     </a>
     <span class="whatsapp-tooltip">Chat with us! 💝</span>
@@ -395,7 +464,7 @@
   <footer>
     <p>&copy; <span id="year"></span> Creative Space. All rights reserved.</p>
     <p class="footer-credits">
-      Design and developed by <a href="https://rs.lokaai.in/" target="_blank" rel="noopener">Roshni</a>
+      Design and developed by <a href="https://rs.lokaai.in/" target="_blank" rel="noopener">Roshni Stephen</a>
     </p>
     <p class="footer-powered">
       Powered By <a href="https://lokaai.in/" target="_blank" rel="noopener">Loka AI</a>
