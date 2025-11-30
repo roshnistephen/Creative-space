@@ -687,12 +687,46 @@ section p.section-intro {
   overflow: hidden;
   aspect-ratio: 1;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(55, 35, 90, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 
+    0 8px 25px rgba(55, 35, 90, 0.1),
+    0 0 0 3px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(147, 197, 253, 0.3),
+    0 0 15px rgba(249, 168, 212, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  background: linear-gradient(135deg, #93c5fd 0%, #f9a8d4 100%);
+  padding: 3px;
+}
+
+.gallery-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 3px;
+  background: linear-gradient(135deg, #93c5fd, #c4b5fd, #f9a8d4, #93c5fd);
+  background-size: 300% 300%;
+  animation: borderGlow 4s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .gallery-item:hover {
   transform: scale(1.03);
+  box-shadow: 
+    0 12px 35px rgba(55, 35, 90, 0.15),
+    0 0 0 3px rgba(255, 255, 255, 1),
+    0 0 25px rgba(147, 197, 253, 0.5),
+    0 0 25px rgba(249, 168, 212, 0.5);
 }
 
 .gallery-item img {
@@ -700,6 +734,7 @@ section p.section-intro {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  border-radius: 0.85rem;
 }
 
 .gallery-item:hover img {
@@ -782,63 +817,74 @@ section p.section-intro {
 /* ============================================
    HAPPY CUSTOMERS SECTION
    ============================================ */
+/* ============================================
+   HAPPY CUSTOMERS SECTION - CUTE HEART THEME
+   ============================================ */
 .happy-customers {
-  padding: 2.5rem 0;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 193, 7, 0.05) 100%);
+  padding: 1.8rem 0;
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(255, 240, 246, 0.15) 50%, rgba(245, 240, 255, 0.1) 100%);
   position: relative;
   overflow: hidden;
 }
 
 .happy-customers::before {
-  content: "🔥";
+  content: "💖";
   position: absolute;
-  font-size: 8rem;
-  opacity: 0.04;
-  top: -30px;
-  left: -30px;
+  font-size: 5rem;
+  opacity: 0.06;
+  top: -15px;
+  left: -15px;
+  animation: gentlePulse 3s ease-in-out infinite;
 }
 
 .happy-customers::after {
-  content: "💖";
+  content: "💕";
   position: absolute;
-  font-size: 6rem;
-  opacity: 0.04;
-  bottom: -20px;
-  right: -20px;
+  font-size: 4rem;
+  opacity: 0.06;
+  bottom: -10px;
+  right: -10px;
+  animation: gentlePulse 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.06; }
+  50% { transform: scale(1.1); opacity: 0.1; }
 }
 
 .happy-customers h2 {
-  color: var(--flame-orange);
+  color: var(--accent-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  font-size: 1.4rem;
 }
 
-.flame-badge {
+.love-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  background: linear-gradient(135deg, var(--flame-orange) 0%, var(--flame-yellow) 100%);
+  background: linear-gradient(135deg, #ff69b4 0%, var(--accent) 50%, var(--accent-dark) 100%);
   color: #fff;
   padding: 0.2rem 0.7rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  animation: flameGlow 2s infinite;
+  animation: loveGlow 2s ease-in-out infinite;
 }
 
-@keyframes flameGlow {
-  0%, 100% { box-shadow: 0 0 10px rgba(255, 107, 53, 0.4); }
-  50% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.6); }
+@keyframes loveGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 105, 180, 0.4); }
+  50% { box-shadow: 0 0 15px rgba(255, 105, 180, 0.6), 0 0 25px rgba(197, 155, 255, 0.3); }
 }
 
 .video-container {
-  max-width: 600px;
-  margin: 1.5rem auto 0;
-  border-radius: 1.5rem;
+  max-width: 400px;
+  margin: 1rem auto 0;
+  border-radius: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
   position: relative;
   background: #000;
 }
@@ -847,14 +893,22 @@ section p.section-intro {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   padding: 3px;
-  background: linear-gradient(135deg, var(--flame-orange), var(--flame-yellow), var(--accent));
+  background: linear-gradient(135deg, #ff69b4, var(--accent), #ff69b4, var(--accent-dark));
+  background-size: 300% 300%;
+  animation: gradientBorder 4s ease infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+@keyframes gradientBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .video-container video {
@@ -864,13 +918,71 @@ section p.section-intro {
 
 .video-caption {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+
+/* Floating animated hearts */
+.floating-heart {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0;
+  pointer-events: none;
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+.heart-1 {
+  left: 10%;
+  bottom: 20%;
+  animation-delay: 0s;
+}
+
+.heart-2 {
+  right: 15%;
+  bottom: 30%;
+  animation-delay: 1.5s;
+}
+
+.heart-3 {
+  left: 20%;
+  bottom: 40%;
+  animation-delay: 3s;
+  font-size: 1rem;
+}
+
+.heart-4 {
+  right: 25%;
+  bottom: 25%;
+  animation-delay: 4.5s;
+  font-size: 0.9rem;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5) rotate(0deg);
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(1) rotate(5deg);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-40px) scale(0.9) rotate(-5deg);
+  }
+  90% {
+    opacity: 0.3;
+    transform: translateY(-70px) scale(0.7) rotate(10deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.5) rotate(0deg);
+  }
 }
 
 /* ============================================
@@ -979,7 +1091,7 @@ section p.section-intro {
 }
 
 /* ============================================
-   WHATSAPP FLOATING BUTTON
+   WHATSAPP FLOATING BUTTON - CUTE STYLE
    ============================================ */
 .whatsapp-float {
   position: fixed;
@@ -992,64 +1104,126 @@ section p.section-intro {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #25d366 0, #128c7e 100%);
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #25d366 0%, #20c65a 50%, #128c7e 100%);
   border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 30px rgba(37, 211, 102, 0.5),
+    0 0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 0 8px rgba(37, 211, 102, 0.2);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
+  animation: floatBubble 3s ease-in-out infinite;
+}
+
+@keyframes floatBubble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(2deg); }
+  75% { transform: translateY(-4px) rotate(-2deg); }
 }
 
 .whatsapp-float a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.55);
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 
+    0 15px 40px rgba(37, 211, 102, 0.6),
+    0 0 0 5px rgba(255, 255, 255, 1),
+    0 0 0 10px rgba(37, 211, 102, 0.3),
+    0 0 30px rgba(37, 211, 102, 0.4);
+  animation: none;
+}
+
+.whatsapp-float a::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #fff, #25d366, #ff69b4, #25d366);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: sparkleRing 3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes sparkleRing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .whatsapp-float .wa-icon {
-  font-size: 2rem;
-  color: #fff;
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.whatsapp-float a:hover .wa-icon {
+  animation: none;
+  transform: scale(1.1);
 }
 
 .whatsapp-float .gift-icon {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(135deg, var(--accent) 0, var(--accent-dark) 100%);
+  top: -8px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #ff69b4 0%, var(--accent) 50%, var(--accent-dark) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  box-shadow: 0 3px 10px rgba(124, 78, 220, 0.4);
-  animation: bounce 2s infinite;
+  font-size: 0.9rem;
+  box-shadow: 
+    0 4px 15px rgba(255, 105, 180, 0.5),
+    0 0 0 2px #fff;
+  animation: bounceGift 1.5s ease-in-out infinite, sparkle 2s ease-in-out infinite;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+@keyframes bounceGift {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.1); }
+}
+
+@keyframes sparkle {
+  0%, 100% { box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5), 0 0 0 2px #fff; }
+  50% { box-shadow: 0 4px 20px rgba(255, 105, 180, 0.8), 0 0 0 3px #fff, 0 0 15px rgba(255, 105, 180, 0.4); }
 }
 
 .whatsapp-tooltip {
   position: absolute;
-  right: 70px;
+  right: 80px;
   top: 50%;
   transform: translateY(-50%);
-  background: #333;
+  background: linear-gradient(135deg, #ff69b4 0%, var(--accent-dark) 100%);
   color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
   font-size: 0.85rem;
+  font-weight: 500;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+  transform: translateY(-50%) translateX(10px) scale(0.9);
 }
 
 .whatsapp-float:hover .whatsapp-tooltip {
   opacity: 1;
+  transform: translateY(-50%) translateX(0) scale(1);
+}
+
+.whatsapp-tooltip::before {
+  content: "✨";
+  margin-right: 0.3rem;
 }
 
 .whatsapp-tooltip::after {
@@ -1058,8 +1232,39 @@ section p.section-intro {
   right: -8px;
   top: 50%;
   transform: translateY(-50%);
-  border: 4px solid transparent;
-  border-left-color: #333;
+  border: 6px solid transparent;
+  border-left-color: var(--accent-dark);
+}
+
+/* Cute floating hearts around button */
+.whatsapp-float::before,
+.whatsapp-float::after {
+  content: "💝";
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0;
+  animation: floatingHearts 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.whatsapp-float::before {
+  top: -10px;
+  left: -10px;
+  animation-delay: 0s;
+}
+
+.whatsapp-float::after {
+  content: "💖";
+  bottom: -5px;
+  left: -15px;
+  animation-delay: 2s;
+}
+
+@keyframes floatingHearts {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+  20% { opacity: 1; transform: translateY(-10px) scale(1); }
+  80% { opacity: 1; transform: translateY(-25px) scale(0.8); }
+  100% { opacity: 0; transform: translateY(-35px) scale(0.5); }
 }
 
 /* ============================================
@@ -1139,10 +1344,21 @@ footer .footer-icons span {
     height: 45px;
   }
   .whatsapp-float a {
-    width: 55px;
-    height: 55px;
+    width: 58px;
+    height: 58px;
   }
   .whatsapp-float .wa-icon {
-    font-size: 1.8rem;
+    width: 28px;
+    height: 28px;
+  }
+  .whatsapp-float .gift-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    top: -6px;
+    right: -6px;
+  }
+  .whatsapp-tooltip {
+    display: none;
   }
 }
