@@ -1465,7 +1465,7 @@ section p.section-intro {
   background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  color: #e1306c;
+  color: #c13584; /* Improved contrast fallback color */
 }
 
 .contact-instagram {
@@ -1617,7 +1617,6 @@ section p.section-intro {
   width: 32px;
   height: 32px;
   fill: #fff;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
   animation: wiggle 2s ease-in-out infinite;
 }
 

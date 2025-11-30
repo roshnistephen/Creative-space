@@ -194,14 +194,23 @@ function initGalleryLikeButtons() {
         this.classList.remove('liked');
         heartIcon.textContent = '🤍';
       } else {
-        // Like with heartbeat animation
+        // Like with heartbeat animation using Web Animations API
         this.classList.add('liked');
         heartIcon.textContent = '❤️';
         
-        // Trigger animation
-        this.classList.remove('liked');
-        void this.offsetWidth; // Force reflow
-        this.classList.add('liked');
+        // Use Web Animations API for reliable animation
+        heartIcon.animate([
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.3)' },
+          { transform: 'scale(0.9)' },
+          { transform: 'scale(1.2)' },
+          { transform: 'scale(0.95)' },
+          { transform: 'scale(1.1)' },
+          { transform: 'scale(1)' }
+        ], {
+          duration: 600,
+          easing: 'ease-in-out'
+        });
       }
     });
     
@@ -266,13 +275,15 @@ function initContactFormValidation() {
   
   function validatePhone() {
     var value = phoneInput.value.trim();
-    var phoneRegex = /^[0-9]{10,15}$/;
+    // More flexible phone validation - allows digits, spaces, dashes, plus sign
+    var phoneRegex = /^[\d\s\-+()]{10,20}$/;
+    var digitsOnly = value.replace(/[\s\-+()]/g, '');
     if (!value) {
       phoneInput.classList.add('error');
       phoneInput.classList.remove('success');
       phoneError.textContent = 'Please enter your phone number';
       return false;
-    } else if (!phoneRegex.test(value.replace(/[\s\-\+]/g, ''))) {
+    } else if (!phoneRegex.test(value) || digitsOnly.length < 10 || digitsOnly.length > 15) {
       phoneInput.classList.add('error');
       phoneInput.classList.remove('success');
       phoneError.textContent = 'Please enter a valid phone number (10-15 digits)';
