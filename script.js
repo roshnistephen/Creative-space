@@ -9,45 +9,69 @@ document.addEventListener('DOMContentLoaded', function() {
   // Menu Toggle - Initialize immediately
   var menuToggle = document.getElementById('menuToggle');
   var navLinks = document.getElementById('navLinks');
+  var navCloseBtn = document.getElementById('navCloseBtn');
 
   if (menuToggle && navLinks) {
-    // Handle both click and touch
+    // Handle both click and touch for menu toggle
     function toggleMenu(e) {
       e.preventDefault();
       e.stopPropagation();
       if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
+        closeMenu();
       } else {
-        navLinks.classList.add('active');
-        menuToggle.classList.add('active');
+        openMenu();
       }
     }
     
-    menuToggle.onclick = toggleMenu;
-    menuToggle.ontouchend = function(e) {
+    function openMenu() {
+      navLinks.classList.add('active');
+      menuToggle.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+    
+    function closeMenu() {
+      navLinks.classList.remove('active');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+    
+    // Menu toggle button events
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('touchend', function(e) {
       e.preventDefault();
       toggleMenu(e);
-    };
+    });
+    
+    // Close button inside nav
+    if (navCloseBtn) {
+      navCloseBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+      });
+      navCloseBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
 
     // Close menu when clicking outside
-    document.onclick = function(e) {
+    document.addEventListener('click', function(e) {
       if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
+        closeMenu();
       }
-    };
+    });
 
     // Handle nav link clicks
-    var links = navLinks.getElementsByTagName('a');
-    for (var i = 0; i < links.length; i++) {
-      links[i].onclick = function(e) {
+    var links = navLinks.querySelectorAll('a');
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
         var href = this.getAttribute('href');
         
         // Close menu
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
+        closeMenu();
         
         // Scroll to section
         if (href && href.indexOf('#') === 0) {
@@ -63,18 +87,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
           }
         }
-      };
-    }
+      });
+    });
   }
 
   // Gallery Lightbox functionality
   initGalleryLightbox();
 
-  // Heart animation on gallery items
-  initHeartAnimation();
+  // Instagram-like heart animation on gallery items
+  initGalleryLikeButtons();
 
   // WhatsApp tooltip
   initWhatsAppTooltip();
+
+  // Contact form validation
+  initContactFormValidation();
 
   // Add floating decorations
   addFloatingDecorations();
@@ -151,20 +178,40 @@ function initGalleryLightbox() {
   }
 }
 
-// Heart animation effect on gallery hover
-function initHeartAnimation() {
-  var galleryItems = document.querySelectorAll('.gallery-item');
+// Gallery Like Buttons - Instagram Style
+function initGalleryLikeButtons() {
+  var likeButtons = document.querySelectorAll('.gallery-like-btn');
   
-  for (var i = 0; i < galleryItems.length; i++) {
-    galleryItems[i].onmouseenter = function() {
-      var heart = this.querySelector('.gallery-heart');
-      if (heart) {
-        heart.style.animation = 'none';
-        heart.offsetHeight;
-        heart.style.animation = 'heartBeat 0.6s ease-in-out';
+  likeButtons.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent lightbox from opening
+      
+      var heartIcon = this.querySelector('.heart-icon');
+      var isLiked = this.classList.contains('liked');
+      
+      if (isLiked) {
+        // Unlike
+        this.classList.remove('liked');
+        heartIcon.textContent = '🤍';
+      } else {
+        // Like with heartbeat animation
+        this.classList.add('liked');
+        heartIcon.textContent = '❤️';
+        
+        // Trigger animation
+        this.classList.remove('liked');
+        void this.offsetWidth; // Force reflow
+        this.classList.add('liked');
       }
-    };
-  }
+    });
+    
+    // Touch support
+    btn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.click();
+    });
+  });
 }
 
 // WhatsApp tooltip visibility
@@ -184,9 +231,121 @@ function initWhatsAppTooltip() {
   }
 }
 
-// Form handling
+// Form handling with validation
+function initContactFormValidation() {
+  var contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
+  
+  var nameInput = document.getElementById('name');
+  var phoneInput = document.getElementById('phone');
+  var detailsInput = document.getElementById('details');
+  var nameError = document.getElementById('nameError');
+  var phoneError = document.getElementById('phoneError');
+  var detailsError = document.getElementById('detailsError');
+  
+  // Validation functions
+  function validateName() {
+    var value = nameInput.value.trim();
+    if (!value) {
+      nameInput.classList.add('error');
+      nameInput.classList.remove('success');
+      nameError.textContent = 'Please enter your name';
+      return false;
+    } else if (value.length < 2) {
+      nameInput.classList.add('error');
+      nameInput.classList.remove('success');
+      nameError.textContent = 'Name must be at least 2 characters';
+      return false;
+    } else {
+      nameInput.classList.remove('error');
+      nameInput.classList.add('success');
+      nameError.textContent = '';
+      return true;
+    }
+  }
+  
+  function validatePhone() {
+    var value = phoneInput.value.trim();
+    var phoneRegex = /^[0-9]{10,15}$/;
+    if (!value) {
+      phoneInput.classList.add('error');
+      phoneInput.classList.remove('success');
+      phoneError.textContent = 'Please enter your phone number';
+      return false;
+    } else if (!phoneRegex.test(value.replace(/[\s\-\+]/g, ''))) {
+      phoneInput.classList.add('error');
+      phoneInput.classList.remove('success');
+      phoneError.textContent = 'Please enter a valid phone number (10-15 digits)';
+      return false;
+    } else {
+      phoneInput.classList.remove('error');
+      phoneInput.classList.add('success');
+      phoneError.textContent = '';
+      return true;
+    }
+  }
+  
+  function validateDetails() {
+    var value = detailsInput.value.trim();
+    if (!value) {
+      detailsInput.classList.add('error');
+      detailsInput.classList.remove('success');
+      detailsError.textContent = 'Please enter gift details';
+      return false;
+    } else if (value.length < 10) {
+      detailsInput.classList.add('error');
+      detailsInput.classList.remove('success');
+      detailsError.textContent = 'Please provide more details (at least 10 characters)';
+      return false;
+    } else {
+      detailsInput.classList.remove('error');
+      detailsInput.classList.add('success');
+      detailsError.textContent = '';
+      return true;
+    }
+  }
+  
+  // Real-time validation on blur
+  nameInput.addEventListener('blur', validateName);
+  phoneInput.addEventListener('blur', validatePhone);
+  detailsInput.addEventListener('blur', validateDetails);
+  
+  // Clear error on input
+  nameInput.addEventListener('input', function() {
+    if (this.classList.contains('error')) validateName();
+  });
+  phoneInput.addEventListener('input', function() {
+    if (this.classList.contains('error')) validatePhone();
+  });
+  detailsInput.addEventListener('input', function() {
+    if (this.classList.contains('error')) validateDetails();
+  });
+  
+  // Form submission
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var isNameValid = validateName();
+    var isPhoneValid = validatePhone();
+    var isDetailsValid = validateDetails();
+    
+    if (isNameValid && isPhoneValid && isDetailsValid) {
+      var name = nameInput.value.trim();
+      var phone = phoneInput.value.trim();
+      var details = detailsInput.value.trim();
+      
+      var message = encodeURIComponent(
+        'Hi! I\'m ' + name + '.\n\nPhone: ' + phone + '\n\nGift Details:\n' + details
+      );
+      
+      window.open('https://wa.me/917012716657?text=' + message, '_blank');
+    }
+  });
+}
+
+// Form handling - Legacy support (kept for backwards compatibility)
 var contactForm = document.querySelector('.contact-form');
-if (contactForm) {
+if (contactForm && !document.getElementById('contactForm')) {
   contactForm.onsubmit = function(e) {
     e.preventDefault();
     
