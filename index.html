@@ -3,473 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creative Space | Custom Gift Hampers & Chocolate Towers</title>
-  <meta name="description" content="Creative Space creates customized gift hampers, chocolate towers and budget-friendly gifts with courier delivery. Make every celebration special.">
-  <style>
-    :root {
-      --bg: #f9f4ff;
-      --accent: #c59bff;
-      --accent-dark: #7c4edc;
-      --text: #2b2333;
-      --muted: #7a6f85;
-      --card-bg: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #ffe9f0 0, var(--bg) 40%, #f3ebff 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    header {
-      padding: 1.2rem 0;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.4rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .logo span {
-      color: var(--accent-dark);
-    }
-
-    .tagline {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-top: 0.1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-dark);
-    }
-
-    /* HERO */
-    .hero {
-      padding: 3rem 0 3.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .hero-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .hero h1 {
-      font-size: 2.4rem;
-      line-height: 1.15;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero h1 span {
-      color: var(--accent-dark);
-    }
-
-    .hero p {
-      color: var(--muted);
-      margin-bottom: 1.4rem;
-      max-width: 32rem;
-      font-size: 0.98rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent) 0, var(--accent-dark) 100%);
-      color: #fff;
-      box-shadow: 0 14px 30px rgba(124, 78, 220, 0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(124, 78, 220, 0.4);
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--accent-dark);
-      border: 1px solid rgba(197, 155, 255, 0.4);
-    }
-
-    .btn-ghost:hover {
-      background: #fff;
-      transform: translateY(-1px);
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-note span {
-      font-weight: 600;
-      color: var(--accent-dark);
-    }
-
-    /* HERO IMAGE SIDE */
-    .hero-card {
-      background: rgba(255, 255, 255, 0.86);
-      border-radius: 1.8rem;
-      padding: 1.4rem;
-      box-shadow: 0 28px 60px rgba(55, 35, 90, 0.14);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, #ffe6f5 0, transparent 60%);
-      top: -50px;
-      right: -40px;
-      opacity: 0.7;
-    }
-
-    .hero-card-title {
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-card-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .mini-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .mini-tag {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: #f5f0ff;
-      color: var(--accent-dark);
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-    }
-
-    .stat {
-      background: #fdfbff;
-      border-radius: 1rem;
-      padding: 0.6rem 0.8rem;
-      flex: 1;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.1rem;
-    }
-
-    /* SECTION GENERIC */
-    section {
-      padding: 2.2rem 0;
-    }
-
-    section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.4rem;
-      text-align: center;
-    }
-
-    section p.section-intro {
-      text-align: center;
-      font-size: 0.92rem;
-      color: var(--muted);
-      max-width: 32rem;
-      margin: 0 auto 1.6rem;
-    }
-
-    /* ABOUT */
-    .about {
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 1.4rem;
-      padding: 1.6rem 1.2rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-    }
-
-    .about p {
-      font-size: 0.96rem;
-      color: var(--muted);
-    }
-
-    /* SERVICES */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.1rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 1.2rem;
-      padding: 1.1rem 1rem;
-      box-shadow: 0 14px 32px rgba(55, 35, 90, 0.08);
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    /* WHY US */
-    .why-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-top: 0.4rem;
-    }
-
-    .why-item {
-      background: #f5f0ff;
-      padding: 0.5rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: var(--accent-dark);
-      white-space: nowrap;
-    }
-
-    /* CTA STRIP */
-    .cta-strip {
-      margin-top: 1.4rem;
-      padding: 1.1rem 1.2rem;
-      border-radius: 1.3rem;
-      background: linear-gradient(135deg, #ffe3f2 0, #e5d5ff 50%, #fff0f6 100%);
-      text-align: center;
-      font-size: 0.95rem;
-      box-shadow: 0 16px 40px rgba(124, 78, 220, 0.28);
-    }
-
-    .cta-strip p {
-      margin-bottom: 0.7rem;
-    }
-
-    /* CONTACT */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .contact-card {
-      background: var(--card-bg);
-      border-radius: 1.2rem;
-      padding: 1.2rem;
-      box-shadow: 0 16px 40px rgba(55, 35, 90, 0.1);
-      font-size: 0.95rem;
-    }
-
-    .contact-card p {
-      margin-bottom: 0.4rem;
-      color: var(--muted);
-    }
-
-    .contact-card strong {
-      color: var(--text);
-    }
-
-    .contact-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-
-    .contact-form {
-      background: rgba(255, 255, 255, 0.75);
-      border-radius: 1.2rem;
-      padding: 1.2rem;
-      box-shadow: 0 16px 40px rgba(55, 35, 90, 0.08);
-      font-size: 0.9rem;
-    }
-
-    .field {
-      margin-bottom: 0.7rem;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-size: 0.85rem;
-    }
-
-    .field input,
-    .field textarea {
-      width: 100%;
-      border-radius: 0.7rem;
-      border: 1px solid #e0d4ff;
-      padding: 0.5rem 0.7rem;
-      font: inherit;
-      outline: none;
-      background: #fdfbff;
-    }
-
-    .field input:focus,
-    .field textarea:focus {
-      border-color: var(--accent-dark);
-      box-shadow: 0 0 0 2px rgba(124, 78, 220, 0.15);
-      background: #fff;
-    }
-
-    .field textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    footer {
-      padding: 1.2rem 0 1.4rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--accent-dark);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .hero-card {
-        order: -1;
-      }
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        font-size: 0.85rem;
-      }
-      .hero {
-        padding-top: 2rem;
-      }
-      .hero h1 {
-        font-size: 1.9rem;
-      }
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <title>Craft by Radhika | Custom Gift Hampers & Chocolate Towers</title>
+  <meta name="description" content="Craft by Radhika creates customized gift hampers, chocolate towers, frames and budget-friendly gifts with courier delivery. Make every celebration special. Located in Cherthala, Alappuzha.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div>
-        <div class="logo"><span>Creative</span> Space</div>
-        <div class="tagline">Custom Hampers • Gift Boxes • Chocolate Towers</div>
+      <div class="logo-container">
+        <img src="images/logo.jpeg" alt="Craft by Radhika Logo" class="logo-img">
+        <div>
+          <div class="logo"><span>Craft</span> by Radhika</div>
+          <div class="tagline">
+            <span class="icon">🎁</span> Custom Hampers • Gift Boxes • Chocolate Towers
+          </div>
+        </div>
       </div>
       <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Gift Hampers</a>
-        <a href="#why">Why Us</a>
-        <a href="#contact">Contact</a>
+        <a href="#about"><span class="nav-icon">✨</span> About</a>
+        <a href="#services"><span class="nav-icon">🎀</span> Gift Hampers</a>
+        <a href="#gallery"><span class="nav-icon">📸</span> Gallery</a>
+        <a href="#why"><span class="nav-icon">💖</span> Why Us</a>
+        <a href="https://wa.me/917012716657" class="whatsapp-nav-btn" target="_blank" rel="noopener">
+          <span>📱</span> WhatsApp
+        </a>
       </nav>
     </div>
   </header>
@@ -484,24 +44,24 @@
         </div>
         <h1>Make every <span>celebration</span> feel extra special.</h1>
         <p>
-          Creative Space crafts personalized gift hampers, chocolate towers and custom gift
+          Craft by Radhika creates personalized gift hampers, chocolate towers, frames and custom gift
           boxes for birthdays, weddings, baby showers, corporate events and more – styled to your theme and budget.
         </p>
         <div class="hero-buttons">
-          <button class="btn-primary">View Gift Hampers</button>
-          <a href="https://wa.me/919876543210" class="btn-ghost">Chat on WhatsApp</a>
+          <a href="#gallery" class="btn-primary">🎁 View Gift Hampers</a>
+          <a href="https://wa.me/917012716657" class="btn-ghost btn-whatsapp" target="_blank" rel="noopener">📲 Chat on WhatsApp</a>
         </div>
-        <p class="hero-note">Tell us your <span>budget + occasion</span> – we’ll design the rest.</p>
+        <p class="hero-note">💝 Tell us your <span>budget + occasion</span> – we'll design the rest.</p>
       </div>
 
       <aside class="hero-card">
-        <div class="hero-card-title">Gift Box & Hampers • Chocolate Towers</div>
+        <div class="hero-card-title">🎁 Gift Box & Hampers • Chocolate Towers</div>
         <div class="hero-card-sub">Custom themes • Name tags • Photo prints • Premium packing</div>
         <div class="mini-tags">
-          <div class="mini-tag">Birthday Surprises</div>
-          <div class="mini-tag">Baby Shower Hampers</div>
-          <div class="mini-tag">Corporate Gifts</div>
-          <div class="mini-tag">Festive Hampers</div>
+          <div class="mini-tag">🎂 Birthday Surprises</div>
+          <div class="mini-tag">👶 Baby Shower Hampers</div>
+          <div class="mini-tag">💼 Corporate Gifts</div>
+          <div class="mini-tag">🎄 Festive Hampers</div>
         </div>
         <div class="hero-stats">
           <div class="stat">
@@ -520,17 +80,78 @@
       </aside>
     </section>
 
+    <!-- BUSINESS INFO SECTION -->
+    <section class="business-info">
+      <div class="container">
+        <div class="business-card">
+          <div class="business-header">
+            <h2>🎁 Craft by Radhika</h2>
+            <p>Your one-stop destination for beautiful handcrafted gifts</p>
+          </div>
+          <div class="business-content">
+            <div class="business-item">
+              <div class="business-icon">📍</div>
+              <div class="business-text">
+                <h4>Location</h4>
+                <p>Cherthala, Alappuzha</p>
+              </div>
+            </div>
+            <div class="business-item">
+              <div class="business-icon">🖼️</div>
+              <div class="business-text">
+                <h4>All Type Frames</h4>
+                <p>Custom photo frames & memories</p>
+              </div>
+            </div>
+            <div class="business-item">
+              <div class="business-icon">🎁</div>
+              <div class="business-text">
+                <h4>Gift Box & Hampers</h4>
+                <p>Personalized gift solutions</p>
+              </div>
+            </div>
+            <div class="business-item">
+              <div class="business-icon">🍫</div>
+              <div class="business-text">
+                <h4>Chocolate Towers</h4>
+                <p>Stunning chocolate arrangements</p>
+              </div>
+            </div>
+            <div class="business-item">
+              <div class="business-icon">🚚</div>
+              <div class="business-text">
+                <h4>Courier Service</h4>
+                <p>Available for all orders</p>
+              </div>
+            </div>
+            <div class="business-item">
+              <div class="business-icon">💬</div>
+              <div class="business-text">
+                <h4>Contact Us</h4>
+                <p>WhatsApp for quick response</p>
+              </div>
+            </div>
+          </div>
+          <div class="business-whatsapp">
+            <a href="https://wa.me/917012716657" target="_blank" rel="noopener">
+              📱 WhatsApp: +91 70127 16657
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT -->
     <section id="about">
       <div class="container">
         <div class="about">
-          <h2>About Creative Space</h2>
+          <h2><span class="icon">✨</span> About Craft by Radhika</h2>
           <p class="section-intro">
             Personal, pretty and pocket-friendly gifting for every celebration.
           </p>
           <p>
-            At Creative Space, we love turning simple gifts into beautiful memories.
-            We design customized gift hampers, chocolate towers, and curated gift boxes that match your theme, colours
+            At Craft by Radhika, we love turning simple gifts into beautiful memories.
+            We design customized gift hampers, chocolate towers, frames and curated gift boxes that match your theme, colours
             and budget. Whether it is a birthday, anniversary, baby shower, housewarming or office event, we style each
             box with care, premium packing and small thoughtful details.
           </p>
@@ -541,12 +162,13 @@
     <!-- SERVICES -->
     <section id="services">
       <div class="container">
-        <h2>What We Create</h2>
+        <h2><span class="icon">🎀</span> What We Create</h2>
         <p class="section-intro">
-          Choose your budget and occasion – we’ll suggest ideas and build a hamper you’ll love.
+          Choose your budget and occasion – we'll suggest ideas and build a hamper you'll love.
         </p>
         <div class="cards">
           <div class="card">
+            <div class="card-icon">🎁</div>
             <h3>Gift Hampers & Boxes</h3>
             <p>
               Curated hampers with chocolates, snacks, wellness items, self-care goodies and decor, styled inside
@@ -554,30 +176,35 @@
             </p>
           </div>
           <div class="card">
-            <h3>Customized Gifts</h3>
+            <div class="card-icon">🖼️</div>
+            <h3>All Type Frames</h3>
             <p>
-              Name and photo-printed gifts, themed keepsakes and personalised notes that make every gift feel truly yours.
+              Custom photo frames, memory frames and themed keepsakes that capture your special moments beautifully.
             </p>
           </div>
           <div class="card">
+            <div class="card-icon">🍫</div>
             <h3>Chocolate Towers</h3>
             <p>
               Show-stopping chocolate towers and bouquets – perfect for birthdays, anniversaries and surprise plans.
             </p>
           </div>
           <div class="card">
-            <h3>Budget-Friendly Combos</h3>
+            <div class="card-icon">💝</div>
+            <h3>Customized Gifts</h3>
             <p>
-              Cute mini hampers and gift combos starting from pocket-friendly prices for quick, last-minute gifting.
+              Name and photo-printed gifts, themed keepsakes and personalised notes that make every gift feel truly yours.
             </p>
           </div>
           <div class="card">
+            <div class="card-icon">🎨</div>
             <h3>Occasion Styling</h3>
             <p>
-              Theme-based colours, ribbons, tags and fillers to match your event – from kids’ parties to elegant evenings.
+              Theme-based colours, ribbons, tags and fillers to match your event – from kids' parties to elegant evenings.
             </p>
           </div>
           <div class="card">
+            <div class="card-icon">🚚</div>
             <h3>Courier & Delivery</h3>
             <p>
               Safely packed and shipped with trusted courier partners so your surprise reaches on time, in perfect condition.
@@ -587,27 +214,116 @@
       </div>
     </section>
 
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="gallery-section">
+      <div class="container">
+        <h2><span class="icon">💖</span> Our Creations</h2>
+        <p class="section-intro">
+          Browse through our beautiful gift hampers, chocolate towers and custom creations.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.27 PM.jpeg" alt="Custom gift hamper with premium packaging" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.27 PM (1).jpeg" alt="Beautifully decorated gift box arrangement" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.29 PM.jpeg" alt="Chocolate tower gift creation" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.31 PM.jpeg" alt="Birthday celebration hamper" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.33 PM.jpeg" alt="Special occasion gift basket" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.34 PM.jpeg" alt="Custom photo frame gift" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.35 PM.jpeg" alt="Premium festive hamper" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.36 PM.jpeg" alt="Baby shower gift box" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.36 PM (1).jpeg" alt="Personalized keepsake gift" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.36 PM (2).jpeg" alt="Corporate gift arrangement" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.37 PM.jpeg" alt="Anniversary celebration hamper" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallary/WhatsApp Image 2025-11-29 at 12.16.37 PM (1).jpeg" alt="Themed party gift box" loading="lazy">
+            <div class="gallery-overlay"></div>
+            <span class="gallery-heart">💖</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HAPPY CUSTOMERS SECTION -->
+    <section class="happy-customers">
+      <div class="container">
+        <h2>🔥 Happy Customers <span class="flame-badge">💖 Loved</span></h2>
+        <p class="section-intro">
+          See our happy customers enjoying their special gifts!
+        </p>
+        <div class="video-container">
+          <video controls poster="images/logo.jpeg">
+            <source src="images/gallary/HappyCustomer/WhatsApp Video 2025-11-29 at 3.29.53 PM.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p class="video-caption">💝 Making celebrations special, one gift at a time!</p>
+      </div>
+    </section>
+
     <!-- WHY US -->
     <section id="why">
       <div class="container">
-        <h2>Why Celebrate With Us?</h2>
+        <h2><span class="icon">💖</span> Why Celebrate With Us?</h2>
         <p class="section-intro">
           Simple process, thoughtful designs and gifts that look premium without breaking your budget.
         </p>
         <div class="why-list">
-          <div class="why-item">Custom designs for every occasion</div>
-          <div class="why-item">Budget-based hampers</div>
-          <div class="why-item">Premium packing & details</div>
-          <div class="why-item">Quick WhatsApp responses</div>
-          <div class="why-item">Courier service available</div>
+          <div class="why-item">🎨 Custom designs for every occasion</div>
+          <div class="why-item">💰 Budget-based hampers</div>
+          <div class="why-item">🎀 Premium packing & details</div>
+          <div class="why-item">📱 Quick WhatsApp responses</div>
+          <div class="why-item">🚚 Courier service available</div>
         </div>
 
         <div class="cta-strip">
           <p>
-            Ready to surprise someone special? Share your <strong>budget, occasion and date</strong> – we’ll create a
+            Ready to surprise someone special? Share your <strong>budget, occasion and date</strong> – we'll create a
             customized hamper just for you.
           </p>
-          <a href="https://wa.me/919876543210" class="btn-primary">Send Your Details on WhatsApp</a>
+          <a href="https://wa.me/917012716657" class="btn-primary btn-whatsapp" target="_blank" rel="noopener">📲 Send Your Details on WhatsApp</a>
         </div>
       </div>
     </section>
@@ -615,48 +331,72 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="container">
-        <h2>Contact & Orders</h2>
+        <h2><span class="icon">📬</span> Contact & Orders</h2>
         <p class="section-intro">
-          Send us a message with your requirements. We’ll reply with ideas and price options.
+          Send us a message with your requirements. We'll reply with ideas and price options.
         </p>
         <div class="contact-grid">
           <div class="contact-card">
-            <p><strong>WhatsApp:</strong> +91 98765 43210</p>
-            <p><strong>Email:</strong> creativespacegifts@example.com</p>
-            <p><strong>Instagram:</strong> @creativespace.gifts</p>
-            <p><strong>Location:</strong> Your City, Your State</p>
+            <div class="contact-whatsapp-main">
+              <a href="https://wa.me/917012716657" target="_blank" rel="noopener">
+                <span class="contact-icon">📱</span>
+                <strong>WhatsApp: +91 70127 16657</strong>
+              </a>
+            </div>
+            <p><span class="contact-icon">📍</span> <strong>Location:</strong> Cherthala, Alappuzha</p>
+            <p><span class="contact-icon">📸</span> <strong>Instagram:</strong> @craftbyradhika</p>
             <p class="contact-note">
-              Share details like: occasion, age/gender, theme (if any), budget range and delivery date.
+              💡 Share details like: occasion, age/gender, theme (if any), budget range and delivery date.
             </p>
           </div>
 
           <form class="contact-form">
             <div class="field">
-              <label for="name">Name</label>
+              <label for="name">👤 Name</label>
               <input type="text" id="name" placeholder="Your name" />
             </div>
             <div class="field">
-              <label for="phone">Phone / WhatsApp</label>
+              <label for="phone">📱 Phone / WhatsApp</label>
               <input type="text" id="phone" placeholder="Your phone number" />
             </div>
             <div class="field">
-              <label for="details">Gift Details</label>
+              <label for="details">🎁 Gift Details</label>
               <textarea id="details" placeholder="Occasion, budget, delivery date, any theme..."></textarea>
             </div>
-            <button type="submit" class="btn-primary">Send Enquiry (Demo)</button>
-            <p class="contact-note">Form is static. Use it later with backend or Google Forms if needed.</p>
+            <button type="submit" class="btn-primary btn-whatsapp">📲 Send via WhatsApp</button>
+            <p class="contact-note">✨ This will open WhatsApp with your message pre-filled!</p>
           </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/917012716657" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <span class="wa-icon">💬</span>
+      <span class="gift-icon">🎁</span>
+    </a>
+    <span class="whatsapp-tooltip">Chat with us! 💝</span>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img src="" alt="Gallery Image" id="lightbox-img">
+  </div>
+
   <footer>
-    &copy; <span id="year"></span> Creative Space. All rights reserved.
+    <p>&copy; <span id="year"></span> Craft by Radhika. All rights reserved.</p>
+    <p>📍 Cherthala, Alappuzha | 📱 +91 70127 16657</p>
+    <div class="footer-icons">
+      <span>🎁</span>
+      <span>🍫</span>
+      <span>🖼️</span>
+      <span>💝</span>
+    </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
