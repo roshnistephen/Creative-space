@@ -82,13 +82,23 @@ main {
    ============================================ */
 header {
   padding: 1rem 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(124, 78, 220, 0.08);
-  position: sticky;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 245, 250, 0.98) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(124, 78, 220, 0.12);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   width: 100%;
+  border-bottom: 2px solid rgba(197, 155, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+header.scrolled {
+  padding: 0.6rem 0;
+  box-shadow: 0 6px 35px rgba(124, 78, 220, 0.18);
 }
 
 .nav {
@@ -171,18 +181,19 @@ header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, var(--pink-light) 0%, #f5f0ff 100%);
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, #fff 0%, #fff0f6 50%, #f5f0ff 100%);
   border: 2px solid rgba(197, 155, 255, 0.4);
-  border-radius: 999px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: visible;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
+  box-shadow: 0 4px 15px rgba(124, 78, 220, 0.15);
 }
 
 .menu-toggle .menu-icon-open {
@@ -209,9 +220,10 @@ header {
 .menu-toggle:hover,
 .menu-toggle:active,
 .menu-toggle.active {
-  background: linear-gradient(135deg, #ffe3f2 0%, #e5d5ff 100%);
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(197, 155, 255, 0.3);
+  background: linear-gradient(135deg, #fff 0%, #ffe3f2 50%, #e5d5ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 155, 255, 0.35);
+  border-color: var(--accent);
 }
 
 .menu-toggle::before {
@@ -255,46 +267,26 @@ header {
 
 .nav-links {
   display: none;
-  gap: 0.8rem;
-  font-size: 0.88rem;
+  gap: 0.5rem;
+  font-size: 0.9rem;
   align-items: center;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   right: 5%;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 252, 0.98) 100%);
+  backdrop-filter: blur(15px);
   flex-direction: column;
-  padding: 1rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 40px rgba(124, 78, 220, 0.2);
-  border: 2px solid rgba(197, 155, 255, 0.3);
-  min-width: 180px;
-  animation: slideDown 0.3s ease;
+  padding: 1.2rem 1rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 15px 50px rgba(124, 78, 220, 0.2), 0 0 0 1px rgba(197, 155, 255, 0.2);
+  border: 2px solid rgba(197, 155, 255, 0.25);
+  min-width: 200px;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Nav Close Button */
+/* Nav Close Button - Removed, using menu toggle for close */
 .nav-close-btn {
-  display: none;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 28px;
-  height: 28px;
-  border: none;
-  background: linear-gradient(135deg, var(--pink-light) 0%, #f5f0ff 100%);
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent-dark);
-  transition: all 0.3s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.nav-close-btn:hover,
-.nav-close-btn:active {
-  background: linear-gradient(135deg, #ffe3f2 0%, #e5d5ff 100%);
-  transform: scale(1.1);
+  display: none !important;
 }
 
 @keyframes slideDown {
@@ -314,9 +306,9 @@ header {
 
 .nav-links a {
   color: var(--muted);
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  transition: all 0.3s ease;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -325,6 +317,8 @@ header {
   justify-content: center;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  font-weight: 500;
+  background: transparent;
 }
 
 .nav-links a .nav-icon {
@@ -334,13 +328,14 @@ header {
 .nav-links a:hover,
 .nav-links a:active {
   color: var(--accent-dark);
-  background: rgba(197, 155, 255, 0.15);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(197, 155, 255, 0.15) 0%, rgba(255, 227, 242, 0.2) 100%);
+  transform: translateX(3px);
 }
 
 .nav-links a.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--accent) 0, var(--accent-dark) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  box-shadow: 0 4px 15px rgba(124, 78, 220, 0.3);
 }
 
 /* ============================================
@@ -350,6 +345,8 @@ header {
   position: relative;
   overflow: hidden;
   width: 100%;
+  padding-top: 85px;
+  margin-top: -85px;
 }
 
 /* Candy Background */
@@ -647,13 +644,13 @@ header {
 }
 
 .business-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0, rgba(255, 240, 246, 0.95) 50%, rgba(245, 240, 255, 0.95) 100%);
-  border-radius: 1.5rem;
-  padding: 1.8rem 2rem;
-  box-shadow: 0 20px 50px rgba(124, 78, 220, 0.15);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 245, 252, 0.98) 50%, rgba(248, 245, 255, 0.98) 100%);
+  border-radius: 1.8rem;
+  padding: 2.2rem 2.5rem;
+  box-shadow: 0 25px 60px rgba(124, 78, 220, 0.12), 0 0 0 1px rgba(197, 155, 255, 0.15);
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(197, 155, 255, 0.3);
+  border: 2px solid rgba(197, 155, 255, 0.2);
 }
 
 .business-card::before {
@@ -676,13 +673,13 @@ header {
 
 .business-header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .business-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--accent-dark);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -691,7 +688,7 @@ header {
 
 .business-header p {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .business-content {
@@ -703,39 +700,44 @@ header {
 .business-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.8rem;
-  padding: 0.8rem;
-  background: rgba(255, 255, 255, 0.8);
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 1rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(197, 155, 255, 0.1);
 }
 
 .business-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(124, 78, 220, 0.1);
+  border-color: rgba(197, 155, 255, 0.25);
 }
 
 .business-icon {
-  font-size: 1.5rem;
-  width: 45px;
-  height: 45px;
+  font-size: 1.6rem;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--pink-light) 0, #f5f0ff 100%);
-  border-radius: 12px;
+  background: linear-gradient(135deg, var(--pink-light) 0%, #f5f0ff 100%);
+  border-radius: 14px;
   flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(197, 155, 255, 0.2);
 }
 
 .business-text h4 {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
 }
 
 .business-text p {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--muted);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .business-whatsapp {
@@ -768,28 +770,32 @@ header {
    SECTION GENERIC
    ============================================ */
 section {
-  padding: 2.5rem 0;
+  padding: 3rem 0;
   overflow: hidden;
   width: 100%;
+  position: relative;
 }
 
 section h2 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
   text-align: center;
   font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 section h2 .icon {
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
 }
 
 section p.section-intro {
   text-align: center;
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--muted);
-  max-width: 32rem;
-  margin: 0 auto 1.8rem;
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
 }
 
 /* ============================================
@@ -810,12 +816,13 @@ section p.section-intro {
 }
 
 .about {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 1.5rem;
-  padding: 1.8rem 1.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 252, 0.9) 100%);
+  border-radius: 1.8rem;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(197, 155, 255, 0.1);
   position: relative;
   overflow: hidden;
+  border: 2px solid rgba(197, 155, 255, 0.12);
 }
 
 .about::before {
@@ -834,9 +841,9 @@ section p.section-intro {
 }
 
 .about p {
-  font-size: 0.96rem;
+  font-size: 1rem;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* ============================================
@@ -873,18 +880,20 @@ section p.section-intro {
 }
 
 .card {
-  background: var(--card-bg);
-  border-radius: 1.3rem;
-  padding: 1.2rem 1rem;
-  box-shadow: 0 14px 32px rgba(55, 35, 90, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(145deg, #ffffff 0%, #fff8fc 50%, #fdfaff 100%);
+  border-radius: 1.5rem;
+  padding: 1.5rem 1.2rem;
+  box-shadow: 0 15px 40px rgba(55, 35, 90, 0.08), 0 0 0 1px rgba(197, 155, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  border: 2px solid rgba(197, 155, 255, 0.1);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(55, 35, 90, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(55, 35, 90, 0.15);
+  border-color: rgba(197, 155, 255, 0.25);
 }
 
 .card::before {
@@ -951,31 +960,36 @@ section p.section-intro {
 }
 
 .why-item {
-  background: linear-gradient(135deg, #f5f0ff 0, #fff0f6 100%);
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
+  background: linear-gradient(135deg, #f8f5ff 0%, #fff0f6 100%);
+  padding: 0.8rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
   color: var(--accent-dark);
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  transition: transform 0.3s ease;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(197, 155, 255, 0.15);
+  font-weight: 500;
 }
 
 .why-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 78, 220, 0.15);
+  border-color: rgba(197, 155, 255, 0.3);
 }
 
 /* CTA STRIP */
 .cta-strip {
-  margin-top: 1.5rem;
-  padding: 1.3rem 1.5rem;
+  margin-top: 2rem;
+  padding: 1.8rem 2rem;
   border-radius: 1.5rem;
-  background: linear-gradient(135deg, #ffe3f2 0, #e5d5ff 50%, #fff0f6 100%);
+  background: linear-gradient(135deg, #ffe3f2 0%, #e5d5ff 50%, #fff0f6 100%);
   text-align: center;
-  font-size: 0.95rem;
-  box-shadow: 0 16px 40px rgba(124, 78, 220, 0.2);
+  font-size: 1rem;
+  box-shadow: 0 20px 50px rgba(124, 78, 220, 0.18);
+  border: 2px solid rgba(197, 155, 255, 0.15);
 }
 
 .cta-strip p {
@@ -1357,6 +1371,7 @@ section p.section-intro {
    ============================================ */
 #contact {
   position: relative;
+  background: linear-gradient(180deg, transparent 0%, rgba(245, 240, 255, 0.3) 100%);
 }
 
 #contact::before {
@@ -1381,31 +1396,52 @@ section p.section-intro {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  align-items: start;
 }
 
 .contact-card {
-  background: var(--card-bg);
-  border-radius: 1.3rem;
-  padding: 1.4rem;
-  box-shadow: 0 16px 40px rgba(55, 35, 90, 0.1);
+  background: linear-gradient(145deg, #ffffff 0%, #fff8fc 50%, #f8f5ff 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(55, 35, 90, 0.1), 0 0 0 1px rgba(197, 155, 255, 0.1);
   font-size: 0.95rem;
   overflow: hidden;
   word-wrap: break-word;
+  position: relative;
+  border: 2px solid rgba(197, 155, 255, 0.15);
+}
+
+.contact-card::before {
+  content: "✨";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  opacity: 0.15;
+  animation: sparkleFloat 4s ease-in-out infinite;
 }
 
 .contact-card p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   color: var(--muted);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
+  padding: 0.5rem 0;
 }
 
 .contact-card p .contact-icon {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(197, 155, 255, 0.1) 0%, rgba(255, 227, 242, 0.2) 100%);
+  border-radius: 12px;
 }
 
 .contact-card p a {
@@ -1422,19 +1458,28 @@ section p.section-intro {
 }
 
 .contact-note {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--muted);
-  margin-top: 0.8rem;
-  padding-top: 0.8rem;
-  border-top: 1px dashed rgba(197, 155, 255, 0.3);
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(197, 155, 255, 0.08) 0%, rgba(255, 227, 242, 0.1) 100%);
+  border: 1px dashed rgba(197, 155, 255, 0.3);
+  line-height: 1.6;
 }
 
 .contact-whatsapp-main {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(18, 140, 126, 0.1) 100%);
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.08) 0%, rgba(18, 140, 126, 0.08) 100%);
   border-radius: 1rem;
-  border: 1px solid rgba(37, 211, 102, 0.3);
+  border: 2px solid rgba(37, 211, 102, 0.25);
+  transition: all 0.3s ease;
+}
+
+.contact-whatsapp-main:hover {
+  border-color: rgba(37, 211, 102, 0.5);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.15);
 }
 
 .contact-whatsapp-main a {
@@ -1489,34 +1534,37 @@ section p.section-intro {
 }
 
 .contact-form {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 1.3rem;
-  padding: 1.4rem;
-  box-shadow: 0 16px 40px rgba(55, 35, 90, 0.08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 252, 0.95) 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(55, 35, 90, 0.08), 0 0 0 1px rgba(197, 155, 255, 0.1);
   font-size: 0.9rem;
+  border: 2px solid rgba(197, 155, 255, 0.15);
 }
 
 .field {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .field label {
   display: block;
-  margin-bottom: 0.3rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
 }
 
 .field input,
 .field textarea {
   width: 100%;
-  border-radius: 0.8rem;
-  border: 2px solid #e0d4ff;
-  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  border: 2px solid rgba(197, 155, 255, 0.25);
+  padding: 0.85rem 1rem;
   font: inherit;
   outline: none;
-  background: #fdfbff;
-  transition: all 0.3s ease;
+  background: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
 }
 
 .field input:focus,
@@ -1733,13 +1781,14 @@ section p.section-intro {
    FOOTER
    ============================================ */
 footer {
-  padding: 1.5rem 0 2rem;
+  padding: 2rem 0 2.5rem;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--muted);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 240, 246, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 245, 252, 0.6) 50%, rgba(248, 245, 255, 0.7) 100%);
   position: relative;
   overflow: hidden;
+  border-top: 2px solid rgba(197, 155, 255, 0.1);
 }
 
 footer::before {
@@ -1780,8 +1829,8 @@ footer a:hover {
 }
 
 .footer-credits {
-  font-size: 0.8rem;
-  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  margin-top: 1rem;
 }
 
 .footer-powered {
@@ -1799,7 +1848,7 @@ footer a:hover {
   
   .nav-links {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     right: 5%;
   }
 }
@@ -1852,6 +1901,11 @@ footer a:hover {
     padding: 0.8rem 0;
   }
   
+  .hero-section {
+    padding-top: 75px;
+    margin-top: -75px;
+  }
+  
   .nav {
     display: flex;
     flex-direction: row;
@@ -1873,35 +1927,30 @@ footer a:hover {
     margin-left: auto;
     position: relative;
     z-index: 1002;
+    padding: 0.6rem 1rem;
   }
   
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 75px;
     bottom: auto;
-    right: 15px;
+    right: 4%;
     left: auto;
     z-index: 1003;
     max-width: 200px;
     width: auto;
     display: none;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem 1rem 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 40px rgba(124, 78, 220, 0.3);
-    border: 2px solid rgba(197, 155, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 252, 0.98) 100%);
+    backdrop-filter: blur(15px);
+    padding: 1rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 15px 50px rgba(124, 78, 220, 0.25);
+    border: 2px solid rgba(197, 155, 255, 0.25);
   }
   
   .nav-links.active {
     display: flex !important;
-  }
-  
-  .nav-close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   
   .logo-img-wrapper {
@@ -2049,10 +2098,6 @@ footer a:hover {
     justify-content: center;
   }
   
-  .menu-toggle {
-    padding: 0.5rem 1rem;
-  }
-  
   .menu-gift-icon {
     font-size: 1.1rem;
   }
@@ -2087,11 +2132,11 @@ footer a:hover {
   }
   
   .contact-card {
-    padding: 1rem;
+    padding: 1.2rem;
   }
   
   .contact-form {
-    padding: 1rem;
+    padding: 1.2rem;
   }
   
   .contact-whatsapp-main a {

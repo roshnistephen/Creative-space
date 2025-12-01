@@ -6,10 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
     yearElement.textContent = new Date().getFullYear();
   }
 
+  // Header scroll effect
+  var header = document.querySelector('header');
+  function updateHeaderOnScroll() {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', updateHeaderOnScroll);
+  updateHeaderOnScroll();
+
   // Menu Toggle - Initialize immediately
   var menuToggle = document.getElementById('menuToggle');
   var navLinks = document.getElementById('navLinks');
-  var navCloseBtn = document.getElementById('navCloseBtn');
 
   if (menuToggle && navLinks) {
     // Handle both click and touch for menu toggle
@@ -41,20 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       toggleMenu(e);
     });
-    
-    // Close button inside nav
-    if (navCloseBtn) {
-      navCloseBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-      });
-      navCloseBtn.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-      });
-    }
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
@@ -105,7 +102,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add floating decorations
   addFloatingDecorations();
+
+  // Initialize scroll spy for navigation
+  initScrollSpy();
 });
+
+// Scroll Spy - Highlight active nav link based on scroll position
+function initScrollSpy() {
+  var sections = document.querySelectorAll('section[id]');
+  var navLinksAll = document.querySelectorAll('.nav-links a');
+  var header = document.querySelector('header');
+  
+  function updateActiveNav() {
+    var scrollPosition = window.scrollY + (header ? header.offsetHeight : 0) + 100;
+    
+    sections.forEach(function(section) {
+      var sectionTop = section.offsetTop;
+      var sectionHeight = section.offsetHeight;
+      var sectionId = section.getAttribute('id');
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinksAll.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + sectionId) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+    
+    // Special case: if at the top, highlight home
+    if (window.scrollY < 100) {
+      navLinksAll.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#home') {
+          link.classList.add('active');
+        }
+      });
+    }
+  }
+  
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav(); // Initial call
+}
 
 // Add floating decorations
 function addFloatingDecorations() {
@@ -349,7 +388,7 @@ function initContactFormValidation() {
         'Hi! I\'m ' + name + '.\n\nPhone: ' + phone + '\n\nGift Details:\n' + details
       );
       
-      window.open('https://wa.me/917012716657?text=' + message, '_blank');
+      window.open('https://wa.me/919847166571?text=' + message, '_blank');
     }
   });
 }
@@ -368,6 +407,6 @@ if (contactForm && !document.getElementById('contactForm')) {
       'Hi! I\'m ' + name + '.\n\nPhone: ' + phone + '\n\nGift Details:\n' + details
     );
     
-    window.open('https://wa.me/917012716657?text=' + message, '_blank');
+    window.open('https://wa.me/919847166571?text=' + message, '_blank');
   };
 }
